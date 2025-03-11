@@ -53,12 +53,12 @@ Template File: sources-sink-33.tmpl.cpp
 #define TCP_PORT 27015
 #define IP_ADDRESS "127.0.0.1"
 
-#ifdef _WIN32
-#include <process.h>
-#define EXECL _execl
-#else /* NOT _WIN32 */
-#define EXECL execl
-#endif
+// #ifdef _WIN32
+// #include <process.h>
+// #define EXECL _execl
+// #else /* NOT _WIN32 */
+// #define EXECL execl
+// #endif
 
 namespace CWE78_OS_Command_Injection__char_connect_socket_execl_33
 {
@@ -142,7 +142,7 @@ void bad()
         char * data = dataRef;
         /* execl - specify the path where the command is located */
         /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-        EXECL(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
+        execl(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
     }
 }
 
@@ -163,7 +163,7 @@ static void goodG2B()
         char * data = dataRef;
         /* execl - specify the path where the command is located */
         /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-        EXECL(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
+        execl(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
     }
 }
 

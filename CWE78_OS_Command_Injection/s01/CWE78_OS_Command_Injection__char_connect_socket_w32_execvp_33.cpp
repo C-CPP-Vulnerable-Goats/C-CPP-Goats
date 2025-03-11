@@ -141,7 +141,7 @@ void bad()
             /* execvp - searches for the location of the command among
              * the directories specified by the PATH environment variable */
             /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-            EXECVP(COMMAND_INT, args);
+            execvp(COMMAND_INT, args);
         }
     }
 }
@@ -166,7 +166,7 @@ static void goodG2B()
             /* execvp - searches for the location of the command among
              * the directories specified by the PATH environment variable */
             /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-            EXECVP(COMMAND_INT, args);
+            execvp(COMMAND_INT, args);
         }
     }
 }

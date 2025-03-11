@@ -140,7 +140,7 @@ void bad()
             char *args[] = {COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL};
             /* execv - specify the path where the command is located */
             /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-            EXECV(COMMAND_INT_PATH, args);
+            execv(COMMAND_INT_PATH, args);
         }
     }
 }
@@ -164,7 +164,7 @@ static void goodG2B()
             char *args[] = {COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL};
             /* execv - specify the path where the command is located */
             /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-            EXECV(COMMAND_INT_PATH, args);
+            execv(COMMAND_INT_PATH, args);
         }
     }
 }

@@ -132,7 +132,7 @@ void bad()
     {
         char * data = dataRef;
         /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */
-        if (SYSTEM(data) != 0)
+        if (system(data) != 0)
         {
             printLine("command execution failed!");
             exit(1);
@@ -156,7 +156,7 @@ static void goodG2B()
     {
         char * data = dataRef;
         /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */
-        if (SYSTEM(data) != 0)
+        if (system(data) != 0)
         {
             printLine("command execution failed!");
             exit(1);

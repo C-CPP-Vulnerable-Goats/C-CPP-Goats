@@ -44,13 +44,6 @@ Template File: sources-sink-01.tmpl.cpp
 #define TCP_PORT 27015
 #define IP_ADDRESS "127.0.0.1"
 
-#ifdef _WIN32
-#define OPEN _open
-#define CLOSE _close
-#else
-#define OPEN open
-#define CLOSE close
-#endif
 
 namespace CWE23_Relative_Path_Traversal__char_connect_socket_open_01
 {
@@ -132,7 +125,7 @@ void bad()
     {
         int fileDesc;
         /* POTENTIAL FLAW: Possibly opening a file without validating the file name or path */
-        fileDesc = OPEN(data, O_RDWR|O_CREAT, S_IREAD|S_IWRITE);
+        fileDesc = open(data, O_RDWR|O_CREAT, S_IREAD|S_IWRITE);
         if (fileDesc != -1)
         {
             CLOSE(fileDesc);
@@ -155,7 +148,7 @@ static void goodG2B()
     {
         int fileDesc;
         /* POTENTIAL FLAW: Possibly opening a file without validating the file name or path */
-        fileDesc = OPEN(data, O_RDWR|O_CREAT, S_IREAD|S_IWRITE);
+        fileDesc = open(data, O_RDWR|O_CREAT, S_IREAD|S_IWRITE);
         if (fileDesc != -1)
         {
             CLOSE(fileDesc);

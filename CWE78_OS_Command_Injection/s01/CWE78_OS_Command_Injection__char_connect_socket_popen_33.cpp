@@ -137,7 +137,7 @@ void bad()
         {
             FILE *pipe;
             /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */
-            pipe = POPEN(data, "w");
+            pipe = popen(data, "w");
             if (pipe != NULL)
             {
                 PCLOSE(pipe);
@@ -164,7 +164,7 @@ static void goodG2B()
         {
             FILE *pipe;
             /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */
-            pipe = POPEN(data, "w");
+            pipe = popen(data, "w");
             if (pipe != NULL)
             {
                 PCLOSE(pipe);

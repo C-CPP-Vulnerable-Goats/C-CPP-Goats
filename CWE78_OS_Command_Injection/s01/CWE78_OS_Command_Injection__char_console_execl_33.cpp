@@ -80,7 +80,7 @@ void bad()
         char * data = dataRef;
         /* execl - specify the path where the command is located */
         /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-        EXECL(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
+        execl(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
     }
 }
 
@@ -101,7 +101,7 @@ static void goodG2B()
         char * data = dataRef;
         /* execl - specify the path where the command is located */
         /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-        EXECL(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
+        execl(COMMAND_INT_PATH, COMMAND_INT_PATH, COMMAND_ARG1, COMMAND_ARG3, NULL);
     }
 }
 
