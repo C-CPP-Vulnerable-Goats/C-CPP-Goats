@@ -44,11 +44,6 @@ Template File: sources-sink-01.tmpl.cpp
 #define TCP_PORT 27015
 #define IP_ADDRESS "127.0.0.1"
 
-#ifdef _WIN32
-#define FOPEN fopen
-#else
-#define FOPEN fopen
-#endif
 
 namespace CWE23_Relative_Path_Traversal__char_connect_socket_fopen_01
 {
@@ -130,7 +125,7 @@ void bad()
     {
         FILE *pFile = NULL;
         /* POTENTIAL FLAW: Possibly opening a file without validating the file name or path */
-        pFile = FOPEN(data, "wb+");
+        pFile = fopen(data, "wb+");
         if (pFile != NULL)
         {
             fclose(pFile);
@@ -153,7 +148,7 @@ static void goodG2B()
     {
         FILE *pFile = NULL;
         /* POTENTIAL FLAW: Possibly opening a file without validating the file name or path */
-        pFile = FOPEN(data, "wb+");
+        pFile = fopen(data, "wb+");
         if (pFile != NULL)
         {
             fclose(pFile);
