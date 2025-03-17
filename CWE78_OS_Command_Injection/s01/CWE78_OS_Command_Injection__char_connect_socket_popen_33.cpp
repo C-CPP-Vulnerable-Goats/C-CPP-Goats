@@ -133,7 +133,10 @@ void bad()
 #endif
     }
     {
-        char * data = dataRef;
+        char data[256]; // Buffer for user input
+
+        printf("Enter a command: ");
+        scanf("%255s", &data); // Read input (unsafe for spaces)
         {
             FILE *pipe;
             /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */

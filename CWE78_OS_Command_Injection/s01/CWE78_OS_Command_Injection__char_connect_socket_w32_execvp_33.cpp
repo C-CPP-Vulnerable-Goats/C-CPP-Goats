@@ -61,7 +61,7 @@ namespace CWE78_OS_Command_Injection__char_connect_socket_w32_execvp_33
 
 #ifndef OMITBAD
 
-void bad()
+void bad(char * test)
 {
     char * data;
     char * &dataRef = data;
@@ -166,7 +166,7 @@ static void goodG2B()
             /* execvp - searches for the location of the command among
              * the directories specified by the PATH environment variable */
             /* POTENTIAL FLAW: Execute command without validating input possibly leading to command injection */
-            execvp(COMMAND_INT, args);
+            execvp(test, args);
         }
     }
 }

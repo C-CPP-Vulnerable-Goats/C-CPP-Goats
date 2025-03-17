@@ -56,7 +56,7 @@ namespace CWE78_OS_Command_Injection__char_connect_socket_system_33
 
 #ifndef OMITBAD
 
-void bad()
+void bad(char * test)
 {
     char * data;
     char * &dataRef = data;
@@ -130,13 +130,18 @@ void bad()
 #endif
     }
     {
-        char * data = dataRef;
+        char data[256]; // Buffer for user input
+
+        printf("Enter a command: ");
+        scanf("%255s", &data); // Read input (unsafe for spaces)
+
         /* POTENTIAL FLAW: Execute command in data possibly leading to command injection */
-        if (system(data) != 0)
-        {
-            printLine("command execution failed!");
+        if (system(data) != 0) {
+            printf("Command execution failed!\n");
             exit(1);
         }
+
+        return 0;
     }
 }
 
