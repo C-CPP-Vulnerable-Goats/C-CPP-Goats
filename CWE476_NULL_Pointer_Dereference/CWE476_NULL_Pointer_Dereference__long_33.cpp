@@ -26,15 +26,23 @@ namespace CWE476_NULL_Pointer_Dereference__long_33
 
 void bad()
 {
-    long * data;
+    long * data = new long;
     long * &dataRef = data;
     /* POTENTIAL FLAW: Set data to NULL */
-    data = NULL;
-    {
-        long * data = dataRef;
-        /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printLongLine(*data);
-    }
+    delete data;
+    /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
+    printLongLine(*data);
+}
+
+void good()
+{
+    long * data = new long;
+    long * &dataRef = data;
+    /* POTENTIAL FLAW: Set data to NULL */
+    delete data;
+    /* FIX: allocate new memory */
+    data = new long;
+    printLongLine(*data);
 }
 
 #endif /* OMITBAD */

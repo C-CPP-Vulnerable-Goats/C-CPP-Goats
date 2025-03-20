@@ -30,12 +30,9 @@ void bad()
     wchar_t * &dataRef = data;
     /* POTENTIAL FLAW: Set data to NULL */
     data = NULL;
-    {
-        wchar_t * data = dataRef;
-        /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        /* printWLine() checks for NULL, so we cannot use it here */
-        printWcharLine(data[0]);
-    }
+    /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
+    /* printWLine() checks for NULL, so we cannot use it here */
+    printWcharLine(data[0]);
 }
 
 #endif /* OMITBAD */

@@ -26,15 +26,23 @@ namespace CWE476_NULL_Pointer_Dereference__struct_33
 
 void bad()
 {
-    twoIntsStruct * data;
+    twoIntsStruct * data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
     twoIntsStruct * &dataRef = data;
     /* POTENTIAL FLAW: Set data to NULL */
-    data = NULL;
-    {
-        twoIntsStruct * data = dataRef;
-        /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
-        printIntLine(data->intOne);
-    }
+    free(data);
+    /* POTENTIAL FLAW: Attempt to use data, which may be NULL */
+    printIntLine(data->intOne);
+}
+
+void good()
+{
+    twoIntsStruct * data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+    twoIntsStruct * &dataRef = data;
+    /* POTENTIAL FLAW: Set data to NULL */
+    free(data);
+    /* FIX: allocate new memory */
+    data = (twoIntsStruct *)malloc(sizeof(twoIntsStruct));
+    printIntLine(data->intOne);
 }
 
 #endif /* OMITBAD */
