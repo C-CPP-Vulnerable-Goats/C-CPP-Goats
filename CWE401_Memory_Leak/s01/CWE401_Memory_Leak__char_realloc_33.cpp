@@ -76,11 +76,8 @@ static void goodB2G()
     /* Initialize and make use of data */
     strcpy(data, "A String");
     printLine(data);
-    {
-        char * data = dataRef;
-        /* FIX: Deallocate memory */
-        free(data);
-    }
+    /* FIX: Deallocate memory */
+    free(data);
 }
 
 void good()

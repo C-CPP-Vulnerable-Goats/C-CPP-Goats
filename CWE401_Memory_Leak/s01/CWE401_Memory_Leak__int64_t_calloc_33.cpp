@@ -76,10 +76,8 @@ static void goodB2G()
     /* Initialize and make use of data */
     data[0] = 5LL;
     printLongLongLine(data[0]);
-    {
-        int64_t * data = dataRef;
-        /* FIX: Deallocate memory */
-        free(data);
+    /* FIX: Deallocate memory */
+    free(data);
     }
 }
 

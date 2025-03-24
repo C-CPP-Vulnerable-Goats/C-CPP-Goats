@@ -66,7 +66,7 @@ static void goodB2G()
     /* POTENTIAL FLAW: Allocate memory on the heap */
     data = new char[100];
     /* Initialize and make use of data */
-    strcpy(data, "A String");
+    // strcpy(data, "A String");
     printLine(data);
     /* FIX: Deallocate memory */
     delete[] data;

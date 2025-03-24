@@ -74,25 +74,6 @@ static void goodB2G1()
     }
 }
 
-/* goodB2G2() - use badsource and goodsink by reversing the blocks in the second if */
-static void goodB2G2()
-{
-    char * data;
-    data = NULL;
-    if(1)
-    {
-        /* POTENTIAL FLAW: Allocate memory on the heap */
-        data = new char[100];
-        /* Initialize and make use of data */
-        strcpy(data, "A String");
-        printLine(data);
-    }
-    if(1)
-    {
-        /* FIX: Deallocate memory */
-        delete[] data;
-    }
-}
 
 /* goodG2B1() - use goodsource and badsink by changing the first 1 to 0 */
 static void goodG2B1()
