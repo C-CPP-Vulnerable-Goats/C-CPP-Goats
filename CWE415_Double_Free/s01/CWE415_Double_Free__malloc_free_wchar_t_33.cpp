@@ -56,7 +56,7 @@ static void goodG2B()
     if (data == NULL) {exit(-1);}
     /* FIX: Do NOT free data in the source - the bad sink frees data */
     {
-        wchar_t * data = dataRef;
+        // wchar_t * data = dataRef;
         /* POTENTIAL FLAW: Possibly freeing memory twice */
         free(data);
     }

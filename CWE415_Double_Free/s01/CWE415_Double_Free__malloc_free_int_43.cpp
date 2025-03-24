@@ -46,13 +46,13 @@ void bad()
 
 #ifndef OMITGOOD
 
-/* goodG2B() uses the GoodSource with the BadSink */
-static void goodG2BSource(int * &data)
-{
-    data = (int *)malloc(100*sizeof(int));
-    if (data == NULL) {exit(-1);}
-    /* FIX: Do NOT free data in the source - the bad sink frees data */
-}
+// /* goodG2B() uses the GoodSource with the BadSink */
+// static void goodG2BSource(int * &data)
+// {
+//     data = (int *)malloc(100*sizeof(int));
+//     if (data == NULL) {exit(-1);}
+//     /* FIX: Do NOT free data in the source - the bad sink frees data */
+// }
 
 static void goodG2B()
 {

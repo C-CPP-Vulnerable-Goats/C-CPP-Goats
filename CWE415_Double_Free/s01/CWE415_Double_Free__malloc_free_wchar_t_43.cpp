@@ -46,13 +46,13 @@ void bad()
 
 #ifndef OMITGOOD
 
-/* goodG2B() uses the GoodSource with the BadSink */
-static void goodG2BSource(wchar_t * &data)
-{
-    data = (wchar_t *)malloc(100*sizeof(wchar_t));
-    if (data == NULL) {exit(-1);}
-    /* FIX: Do NOT free data in the source - the bad sink frees data */
-}
+// /* goodG2B() uses the GoodSource with the BadSink */
+// static void goodG2BSource(wchar_t * &data)
+// {
+//     data = (wchar_t *)malloc(100*sizeof(wchar_t));
+//     if (data == NULL) {exit(-1);}
+//     /* FIX: Do NOT free data in the source - the bad sink frees data */
+// }
 
 static void goodG2B()
 {

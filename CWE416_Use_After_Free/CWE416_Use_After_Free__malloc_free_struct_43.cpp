@@ -56,20 +56,20 @@ void bad()
 #ifndef OMITGOOD
 
 /* goodG2B() uses the GoodSource with the BadSink */
-static void goodG2BSource(twoIntsStruct * &data)
-{
-    data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
-    if (data == NULL) {exit(-1);}
-    {
-        size_t i;
-        for(i = 0; i < 100; i++)
-        {
-            data[i].intOne = 1;
-            data[i].intTwo = 2;
-        }
-    }
-    /* FIX: Do not free data in the source */
-}
+// static void goodG2BSource(twoIntsStruct * &data)
+// {
+//     data = (twoIntsStruct *)malloc(100*sizeof(twoIntsStruct));
+//     if (data == NULL) {exit(-1);}
+//     {
+//         size_t i;
+//         for(i = 0; i < 100; i++)
+//         {
+//             data[i].intOne = 1;
+//             data[i].intTwo = 2;
+//         }
+//     }
+//     /* FIX: Do not free data in the source */
+// }
 
 static void goodG2B()
 {

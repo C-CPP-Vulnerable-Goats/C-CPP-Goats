@@ -77,7 +77,7 @@ static void goodB2G()
     data[0] = 5;
     printIntLine(data[0]);
     {
-        int * data = dataRef;
+        // int * data = dataRef;
         /* FIX: Deallocate memory */
         free(data);
     }
