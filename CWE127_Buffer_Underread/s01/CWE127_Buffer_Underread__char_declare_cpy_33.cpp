@@ -23,7 +23,7 @@ namespace CWE127_Buffer_Underread__char_declare_cpy_33
 
 #ifndef OMITBAD
 
-void bad()
+void bad(char * dest)
 {
     char * data;
     char * &dataRef = data;
@@ -35,11 +35,7 @@ void bad()
     {
         char * data = dataRef;
         {
-            char dest[100*2];
-            memset(dest, 'C', 100*2-1); /* fill with 'C's */
-            dest[100*2-1] = '\0'; /* null terminate */
-            /* POTENTIAL FLAW: Possibly copy from a memory location located before the source buffer */
-            strcpy(dest, data);
+            gets(dest, data);
             printLine(dest);
         }
     }
@@ -50,7 +46,7 @@ void bad()
 #ifndef OMITGOOD
 
 /* goodG2B() uses the GoodSource with the BadSink */
-static void goodG2B()
+static void goodG2B(char * dest)
 {
     char * data;
     char * &dataRef = data;
@@ -62,11 +58,7 @@ static void goodG2B()
     {
         char * data = dataRef;
         {
-            char dest[100*2];
-            memset(dest, 'C', 100*2-1); /* fill with 'C's */
-            dest[100*2-1] = '\0'; /* null terminate */
-            /* POTENTIAL FLAW: Possibly copy from a memory location located before the source buffer */
-            strcpy(dest, data);
+            gets(dest, data);
             printLine(dest);
         }
     }
