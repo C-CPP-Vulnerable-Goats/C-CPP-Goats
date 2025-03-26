@@ -23,22 +23,14 @@ namespace CWE127_Buffer_Underread__char_declare_cpy_33
 
 #ifndef OMITBAD
 
-void bad(char * dest)
-{
-    char * data;
-    char * &dataRef = data;
-    char dataBuffer[100];
-    memset(dataBuffer, 'A', 100-1);
-    dataBuffer[100-1] = '\0';
-    /* FLAW: Set data pointer to before the allocated memory buffer */
-    data = dataBuffer - 8;
-    {
-        char * data = dataRef;
-        {
-            gets(dest, data);
-            printLine(dest);
-        }
+void bad(int argc, char* argv[]) {
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <number>" << std::endl;
+        return;
     }
+
+    double value = atof(argv[1]);  // 🚨 Unsafe conversion: No error checking
+    std::cout << "Converted number: " << value << std::endl;
 }
 
 #endif /* OMITBAD */

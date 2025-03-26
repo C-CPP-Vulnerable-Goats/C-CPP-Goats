@@ -27,23 +27,15 @@ namespace CWE121_Stack_Based_Buffer_Overflow__CWE135_33
 
 #ifndef OMITBAD
 
-void bad()
-{
-    void * data;
-    void * &dataRef = data;
-    data = NULL;
-    /* POTENTIAL FLAW: Set data to point to a wide string */
-    data = (void *)WIDE_STRING;
-    {
-        void * data = dataRef;
-        {
-            /* POTENTIAL FLAW: treating pointer as a char* when it may point to a wide string */
-            size_t dataLen = strlen((char *)data);
-            void * dest = (void *)ALLOCA((dataLen+1) * sizeof(wchar_t));
-            (void)wcscpy((wchar_t *)dest, (wchar_t *)data);
-            printLine((char *)dest);
-        }
-    }
+void bad() {
+    char userInput[50];
+    char buffer[100] = "User: ";
+
+    printf("Enter your name: ");
+    scanf("%49s", &userInput);  // 🚨 Unsafe: No bounds checking beyond 49 chars
+
+    lstrcat(buffer, userInput);  // 🚨 Potential buffer overflow risk!
+    std::cout << "Final string: " << buffer << std::endl;
 }
 
 #endif /* OMITBAD */
