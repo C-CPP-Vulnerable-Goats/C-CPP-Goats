@@ -67,6 +67,7 @@ void bad()
         char * data = dataRef;
         {
             char dest[100] = "";
+            scanf("%49s", &dest); 
             /* POTENTIAL FLAW: Do not specify the format allowing a possible format string vulnerability */
             snprintf(dest, 100-1, data);
             printLine(dest);
@@ -91,6 +92,7 @@ static void goodG2B()
         char * data = dataRef;
         {
             char dest[100] = "";
+            scanf("%49s", &dest); 
             /* POTENTIAL FLAW: Do not specify the format allowing a possible format string vulnerability */
             snprintf(dest, 100-1, data);
             printLine(dest);

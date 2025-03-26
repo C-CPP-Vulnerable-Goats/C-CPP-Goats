@@ -121,7 +121,8 @@ void bad()
 #endif
     }
     {
-        char * data = dataRef;
+        char * data;
+        scanf("%49s", &data); 
         /* POTENTIAL FLAW: Do not specify the format allowing a possible format string vulnerability */
         fprintf(stdout, data);
     }
@@ -141,7 +142,8 @@ static void goodG2B()
     /* FIX: Use a fixed string that does not contain a format specifier */
     strcpy(data, "fixedstringtest");
     {
-        char * data = dataRef;
+        char * data;
+        scanf("%49s", &data); 
         /* POTENTIAL FLAW: Do not specify the format allowing a possible format string vulnerability */
         fprintf(stdout, data);
     }
